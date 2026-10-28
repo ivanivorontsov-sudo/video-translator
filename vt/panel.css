@@ -1,0 +1,5 @@
+body{font:13px system-ui,sans-serif;margin:0;padding:8px;min-width:380px;max-width:520px;background:#f6f7fb;color:#222}header{display:flex;justify-content:space-between;margin-bottom:6px;font-size:15px}
+.card{background:#fff;border-radius:10px;padding:8px 10px;margin-bottom:8px;box-shadow:0 1px 3px #0001}summary{cursor:pointer;font-weight:600}
+.row{display:flex;gap:6px;align-items:center;margin:6px 0;flex-wrap:wrap}.row label{min-width:60px}select{max-width:100%}.btns{display:flex;gap:4px;flex-wrap:wrap;margin:8px 0}
+button{padding:5px 9px;border:1px solid #ccd;border-radius:7px;background:#fff;cursor:pointer}button.pri{background:#2b6cff;color:#fff;border-color:#2b6cff}.mut{color:#667;font-size:12px}
+#keys input{width:100%;box-sizing:border-box;margin:2px 0 6px}

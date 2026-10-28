@@ -1,0 +1,35 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Переводчик видео</title><link rel="stylesheet" href="panel.css"></head><body>
+<header><b>🌐 Переводчик видео</b> <a id="back" href="#" hidden>← назад</a></header>
+<section class="card">
+  <div class="row"><label>Режим</label><select id="mode"><option value="subs">Субтитры</option><option value="voice">Голос (закадровый)</option><option value="both">Субтитры + голос</option></select></div>
+  <div class="row"><label>С языка</label><select id="src"></select><label>на</label><select id="tgt"></select></div>
+  <div class="btns"><button class="pri" id="auto">▶ Перевести</button><button id="caps">Только субтитры</button><button id="audio">Перевод звука</button><button id="stop">■ Стоп</button></div>
+  <div id="stat" class="mut">Готов.</div><div id="lat" class="mut"></div>
+</section>
+<details class="card" open><summary>Движки</summary>
+  <div class="row"><label>Распознавание</label><select id="stt">
+    <option value="webspeech">Google Web Speech — бесплатно, по умолчанию</option><option value="whisper">Whisper локально (офлайн, transformers.js)</option>
+    <option value="openai">OpenAI gpt-4o-transcribe / whisper-1 (ключ)</option><option value="groq">Groq Whisper large-v3-turbo (ключ, быстро)</option>
+    <option value="elevenlabs">ElevenLabs Scribe (ключ, лучший WER для русского)</option><option value="deepgram">Deepgram Nova-3 (ключ)</option>
+    <option value="assemblyai">AssemblyAI (ключ)</option><option value="yandex">Yandex SpeechKit (ключ)</option><option value="azure">Microsoft Azure Speech (ключ)</option></select></div>
+  <div class="row"><label>Перевод</label><select id="tr">
+    <option value="google">Google Translate — бесплатно, по умолчанию</option><option value="chrome">Встроенный переводчик Chrome (офлайн, Chrome 138+)</option>
+    <option value="local">Opus-MT локально (офлайн)</option><option value="deepl">DeepL (ключ)</option><option value="openai">OpenAI GPT с контекстом (ключ)</option>
+    <option value="yandex">Yandex Translate (ключ)</option><option value="microsoft">Microsoft Translator (ключ)</option></select></div>
+  <div class="row"><label>Локальная модель Whisper</label><select id="whisperModel"><option value="onnx-community/whisper-tiny">tiny (~40 МБ)</option><option value="onnx-community/whisper-base">base (~80 МБ)</option><option value="onnx-community/whisper-small">small (~250 МБ, точнее)</option><option value="onnx-community/whisper-large-v3-turbo">large-v3-turbo (~800 МБ, нужен WebGPU)</option></select></div>
+  <div class="row"><label><input type="checkbox" id="prof"> Цензура мата: вкл/выкл</label></div>
+  <div class="row"><label><input type="checkbox" id="captionsFirst"> Сначала готовые субтитры сайта</label></div>
+</details>
+<details class="card"><summary>Голос и звук</summary>
+  <div class="row"><label>Голос</label><select id="ttsVoice"><option value="">Автоматически по языку</option></select><button id="tryVoice">▶</button></div>
+  <div class="row"><label>Скорость</label><input type="range" id="rate" min="0.6" max="2" step="0.05"><span id="rateV"></span></div>
+  <div class="row"><label>Громкость оригинала при озвучке</label><input type="range" id="duck" min="0" max="1" step="0.05"><span id="duckV"></span></div>
+</details>
+<details class="card"><summary>Вид субтитров</summary>
+  <div class="row"><label>Размер</label><input type="range" id="font" min="14" max="48"><label>Цвет</label><input type="color" id="color"></div>
+  <div class="row"><label>Фон</label><input type="range" id="bgA" min="0" max="1" step="0.05"><label>Высота</label><input type="range" id="pos" min="0" max="60"></div>
+  <div class="row"><label><input type="checkbox" id="showOrig"> Показывать оригинал</label></div>
+</details>
+<details class="card"><summary>API-ключи (хранятся только локально)</summary><div id="keys"></div>
+  <p class="mut">Ключи лежат в chrome.storage.local и отправляются только выбранному сервису. Телеметрии нет.</p></details>
+<script src="common.js"></script><script src="panel.js"></script></body></html>
